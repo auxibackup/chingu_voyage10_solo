@@ -1,0 +1,58 @@
+.memory-game-app {
+    height: 600px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.memory-game-app header, .memory-game-app .grid {
+    align-self: center;
+}
+
+.memory-game-app header h1 {
+    text-align: center;
+    height: 20%;
+}
+
+.sub-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: flex-end;
+}
+
+.sub-header * {
+    padding: 0 10px;
+    align-self: center;
+}
+
+.star {
+    padding: 0;
+    margin: 0;
+}
+#reset {
+    height: 26px;
+    width: 26px;
+    background: url('https://img.icons8.com/metro/26/000000/recurring-appointment.png') no-repeat center;    
+
+    transform : scale(.6);    
+}
+#reset:hover {
+    transform : scale(.8);
+}
+.grid {
+    height: 80%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap : wrap;
+    align-content: space-between;
+    padding: 10px;
+    background: gray;
+}
+
+.card {
+    height: 100px;
+    width: 90px;
+    background: purple;
+}
+
