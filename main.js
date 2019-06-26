@@ -14,7 +14,7 @@ let selectionA = undefined;
 let selectionB = undefined;
 let sec = 0;
 let min = 0;
-let isWinner = false;
+let isWinner = true;
 
 const timer = setInterval(function(){
     if(!isWinner){
@@ -31,9 +31,27 @@ const timer = setInterval(function(){
 
 
 const resetGame = () => {
+    new_game();
     cards.forEach(card => {
         hideCard(card);
     })
+    moveCount = 0;
+    matchCount = 0;
+    selectionA = undefined;
+    selectionB = undefined;
+    sec = 0;
+    min = 0;
+    isWinner = false;
+
+    moves.textContent = moveCount;
+    title.textContent = 'Matching Game';
+}
+const new_game = ()=> {
+    grid.innerHTML =''; 
+    grid.setAttribute('style', 'background-color: gray');
+    data = generateGridData(N_CARDS);
+    data = shuffleData(data);
+    generateGridElement(data);
 }
 
 const showCard = (card) => {
@@ -90,25 +108,10 @@ const shuffleData = (data) => {
     return shuffled;
 }
 
-const new_game = ()=> {
-    data = generateGridData(N_CARDS);
-    data = shuffleData(data);
-    generateGridElement(data);
-}
+
 
 reset.addEventListener('click', (e) => {
     resetGame();
-    data = shuffleData(data)
-    moveCount = 0;
-    matchCount = 0;
-    selectionA = undefined;
-    selectionB = undefined;
-    sec = 0;
-    min = 0;
-    isWinner = false;
-
-    moves.textContent = moveCount;
-    title.textContent = 'Matching Game';
 })
 
 grid.addEventListener('click', (e) => {
@@ -151,6 +154,21 @@ grid.addEventListener('click', (e) => {
 
     if(isWinner){
         title.textContent = 'Game Over!'
+        grid.innerHTML = '';
+        grid.style.background='white';
+
+        let newGameButton = document.createElement('button');
+        newGameButton.textContent = `Click to play again!`;
+        newGameButton.style.width = '300px';
+        newGameButton.style.height = '50px';
+        newGameButton.setAttribute('class', 'new-game');
+
+        grid.appendChild(newGameButton);
+
+    }
+
+    if(e.target && e.target.className === 'new-game'){
+        resetGame();
     }
 })
 
