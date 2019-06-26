@@ -14,7 +14,7 @@ let selectionA = undefined;
 let selectionB = undefined;
 let sec = 0;
 let min = 0;
-let isWinner = true;
+let isWinner = false;
 
 const timer = setInterval(function(){
     if(!isWinner){
